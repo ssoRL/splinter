@@ -22,13 +22,8 @@
     ],
     "files": [
         "../typings/react/react-global.d.ts",
-        "constants.ts",
         "interfaces.d.ts",
-        "todoModel.ts",
-        "footer.tsx",
-        "todoItem.tsx",
-        "utils.ts",
-        "app.tsx"
+        "splinter.tsx"
     ],
     "exclude": []
 }
