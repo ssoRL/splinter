@@ -23,7 +23,10 @@
     "files": [
         "../typings/react/react-global.d.ts",
         "interfaces.d.ts",
-        "splinter.tsx"
+        "splinter.tsx",
+        "splinterModel.ts",
+        "splinterTop.tsx",
+        "splinterTopModel.ts"
     ],
     "exclude": []
 }

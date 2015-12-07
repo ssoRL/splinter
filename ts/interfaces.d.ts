@@ -1,28 +1,37 @@
 // a pane can either have some content, or nested panes
 interface IPane {
 	// a function to call when the size of a super-pane changes
-	resize(w: number, h: number);
+	props: IPaneProps;
+	state: IPaneState;
 }
 
+interface IPaneProps {
+	width: number;
+	height: number;
+	x_offset: number;
+	y_offset: number;
+}
+
+interface IPaneState {}
+
 // a content pane has no sub-splinters
-interface IContent extends IPane {
+interface IContent {
 	id: string;
 	title: string;
 }
 
-interface IContentState {
-	width: number;
-	height: number;
-}
+interface IContentProps extends IPaneProps {}
 
 // Splinters have sub-panes
-interface ISplinter extends IPane {
-	sub_panes: IPane[];
+interface ISplinter {}
+
+interface ISplinterProps extends IPaneProps {
+	model: ISplinterModel;
 }
 
-interface ISplinterState {
-	width: number;
-	height: number;
+interface ISplinterModel {
+	sub_panes: IPane[];
+	horz: boolean;
 }
 
 // The component in charge of the whole page
@@ -32,6 +41,10 @@ interface ISplinterTop {
 
 interface ISplinterTopProps {
 	model: ISplinterTopModel;
+}
+
+interface ISplinterTopState {
+	
 }
 
 interface ISplinterTopModel {
