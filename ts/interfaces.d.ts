@@ -27,27 +27,25 @@ interface ISplinter {}
 
 interface ISplinterProps extends IPaneProps {
 	model: ISplinterModel;
+	horizontal: boolean;
 }
 
 interface ISplinterModel {
 	sub_panes: IPane[];
-	horz: boolean;
 }
 
 // The component in charge of the whole page
-interface ISplinterTop {
-	pane: IPane;
-}
+interface ISplinterTop {}
 
 interface ISplinterTopProps {
 	model: ISplinterTopModel;
 }
 
 interface ISplinterTopState {
-	
+	width: number;
+	height: number;
 }
 
 interface ISplinterTopModel {
-	windowResize(w: number, h: number);
-	contents: {[id:string]:IContent};
+	pane: IPane;
 }

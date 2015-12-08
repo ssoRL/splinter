@@ -1,6 +1,6 @@
 module Splinter {
 	
-	export class Splinter extends React.Component<ISplinterProps, {}> {
+	export class Splinter extends React.Component<ISplinterProps, {}> implements IPane {
 		
 		constructor(props: ISplinterProps){
 			super(props);
