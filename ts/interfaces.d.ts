@@ -22,8 +22,7 @@ interface IContent {
 
 interface IContentProps extends IPaneProps {}
 
-// Splinters have sub-panes
-interface ISplinter {}
+interface ISplinter extends IPane {}
 
 interface ISplinterProps extends IPaneProps {
 	model: ISplinterModel;
@@ -47,5 +46,5 @@ interface ISplinterTopState {
 }
 
 interface ISplinterTopModel {
-	pane: IPane;
+	pane: ISplinter;
 }

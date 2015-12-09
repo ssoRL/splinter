@@ -1,7 +1,11 @@
 module Splinter {
 	export class SplinterModel implements ISplinterModel {
+		sub_panes: IPane[];
 		
-		sub_panes = Array<IPane>();
-		horz = true; // true if splinter's extend horizontally
+		constructor(){
+			// a new splinter wil start out with a single
+			// content pane
+			this.sub_panes = [new Content()]
+		}
 	}
 }

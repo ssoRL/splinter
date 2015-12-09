@@ -43,11 +43,18 @@ module Splinter {
 	}
 }
 
-var model = new Splinter.SplinterTopModel();
-
-function render() {
-	React.render(
-		<Splinter.Top model={model}/>,
-		document.getElementsByClassName('splinterTop')[0]
-	)
+var s_props: ISplinterProps = {
+	horizontal: true,
+	model: new Splinter.SplinterModel(),
+	width: 0,
+	height: 0,
+	x_offset: 0,
+	y_offset: 0
 }
+
+var model = new Splinter.TopModel(s_props);
+
+React.render(
+	<Splinter.Top model={model} />,
+	document.getElementsByClassName('splinterTop')[0]
+)

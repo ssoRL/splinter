@@ -10,7 +10,7 @@ module Splinter {
 		public render(){
 			let subs = this.props.model.sub_panes;
 			let subs_l = subs.length;
-			if(this.props.model.horz){
+			if(this.props.horizontal){
 				let sub_width = this.props.width / subs_l;
 				let offset = 0;
 				for(let sub of subs){
