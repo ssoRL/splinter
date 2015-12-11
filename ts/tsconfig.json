@@ -28,7 +28,8 @@
         "splinterModel.ts",
         "splinterTop.tsx",
         "splinterTopModel.ts",
-        "content.tsx"
+        "content.tsx",
+        "contentModel.ts"
     ],
     "exclude": []
 }

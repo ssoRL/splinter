@@ -1,9 +1,9 @@
 module Splinter {
 	export class TopModel implements ISplinterTopModel{
-		pane: ISplinter;
+		splinter: ISplinterModel;
 		
-		constructor(props: ISplinterProps){
-			this.pane = new Splinter(props);
+		constructor(){
+			this.splinter = new SplinterModel();
 		}
 	}
 }

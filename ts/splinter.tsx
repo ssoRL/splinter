@@ -8,21 +8,45 @@ module Splinter {
 		}
 		
 		public render(){
-			let subs = this.props.model.sub_panes;
+			let subs = this.props.model.panes;
 			let subs_l = subs.length;
+			let width = this.props.width;
+			let height = this.props.height
+			let x_off = 0;
+			let y_off = 0;
 			if(this.props.horizontal){
-				let sub_width = this.props.width / subs_l;
-				let offset = 0;
-				for(let sub of subs){
-					//sub.setWidth(subs_l);
-					//sub.setOffsetX(offset);
-					sub.props.width = subs_l;
-					sub.props.x_offset = offset;
-					offset += subs_l;
-				}
+				width = this.props.width / subs_l;
+				x_off = width;
 			}else{
-				// TODO: code to handle vertical alignment
+				height = this.props.height / subs_l;
+				y_off = height;
 			}
+			let rendered_subs = subs.map(function(sub, i){
+				let smodel: ISplinterModel = this.props.model;
+				if(sub instanceof SplinterModel){
+					return (
+						<Splinter 
+							model = {sub}
+							horizontal = {true}
+							width = {width}
+							height = {height}
+							x_offset = {i*x_off}
+							y_offset = {i*y_off}
+						/>
+					)
+				}else if(sub instanceof ContentModel){
+					return (
+						<Content
+							model = {sub}
+							onSplit = {smodel.split.bind(smodel)}
+							width = {width}
+							height = {height}
+							x_offset = {i*x_off}
+							y_offset = {i*y_off}
+						/>
+					)
+				}
+			}, this)
 			let style = {
 				width: this.props.width + "px",
 				height: this.props.height + "px",
@@ -32,7 +56,7 @@ module Splinter {
 			}
 			return (
 				<div style = {style}>
-					{subs}
+					{rendered_subs}
 				</div>
 			)
 		}

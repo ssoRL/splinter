@@ -3,6 +3,7 @@ interface IPane {
 	// a function to call when the size of a super-pane changes
 	props: IPaneProps;
 	state: IPaneState;
+	render(): JSX.Element;
 }
 
 interface IPaneProps {
@@ -14,23 +15,28 @@ interface IPaneProps {
 
 interface IPaneState {}
 
+interface IPaneModel {}
+
 // a content pane has no sub-splinters
-interface IContent {
-	id: string;
-	title: string;
+interface IContentProps extends IPaneProps {
+	onSplit: (string, boolean) => void;
+	model: IContentModel;
 }
 
-interface IContentProps extends IPaneProps {}
+interface IContentModel extends IPaneModel {
+	id: string;
+	bg_color: string;
+}
 
-interface ISplinter extends IPane {}
-
+// The splinter interface
 interface ISplinterProps extends IPaneProps {
 	model: ISplinterModel;
 	horizontal: boolean;
 }
 
-interface ISplinterModel {
-	sub_panes: IPane[];
+interface ISplinterModel extends IPaneModel {
+	panes: IPaneModel[];
+	split: (string, boolean) => void
 }
 
 // The component in charge of the whole page
@@ -46,5 +52,5 @@ interface ISplinterTopState {
 }
 
 interface ISplinterTopModel {
-	pane: ISplinter;
+	splinter: ISplinterModel;
 }
