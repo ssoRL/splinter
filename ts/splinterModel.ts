@@ -1,6 +1,7 @@
 module Splinter {
 	export class SplinterModel implements ISplinterModel {
 		panes: IPaneModel[];
+		update: () => void;
 		
 		constructor(){
 			// a new splinter wil start out with a single
@@ -35,6 +36,8 @@ module Splinter {
 			}
 			// now insert a new empty content
 			this.panes.splice(index, 0, new ContentModel());
+			
+			this.update();
 		}
 	}
 }

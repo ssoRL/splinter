@@ -36,7 +36,8 @@ interface ISplinterProps extends IPaneProps {
 
 interface ISplinterModel extends IPaneModel {
 	panes: IPaneModel[];
-	split: (string, boolean) => void
+	update: () => void;
+	split: (string, boolean) => void;
 }
 
 // The component in charge of the whole page

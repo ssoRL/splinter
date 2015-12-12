@@ -5,6 +5,7 @@ module Splinter {
 		constructor(props: ISplinterProps){
 			super(props);
 			this.state = {};
+			props.model.update = this.forceUpdate.bind(this);
 		}
 		
 		public render(){
