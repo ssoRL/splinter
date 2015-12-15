@@ -14,8 +14,12 @@ module Splinter {
 		// id: The content of a neighboring content to the new one
 		// ahead: true if the new content should be to the right
 		// of the old content
-		public split(id: string, ahead: boolean){
+		public split(index: number){
 			// first find the content to be next to
+			/*
+			Old code that does this by id rather than by index,
+			might be done this way again, who knows?
+			commented in Dec 2015
 			let index = -1;
 			for(let i=0; i<this.panes.length; i++){
 				let pane = this.panes[i];
@@ -34,6 +38,7 @@ module Splinter {
 			if(ahead){
 				index++;
 			}
+			*/
 			// now insert a new empty content
 			this.panes.splice(index, 0, new ContentModel());
 			

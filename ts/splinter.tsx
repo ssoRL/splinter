@@ -23,8 +23,8 @@ module Splinter {
 				height = height / subs_l;
 				y_off = height;
 			}
+			let smodel: ISplinterModel = this.props.model;
 			let rendered_subs: JSX.Element[] = subs.map(function(sub, i){
-				let smodel: ISplinterModel = this.props.model;
 				if(sub instanceof SplinterModel){
 					return (
 						<Splinter 
@@ -40,7 +40,6 @@ module Splinter {
 					return (
 						<Content
 							model = {sub}
-							onSplit = {smodel.split.bind(smodel)}
 							width = {width}
 							height = {height}
 							x_offset = {i*x_off + divider_size}
@@ -61,9 +60,12 @@ module Splinter {
 					left: i*x_off,
 					top: 0
 				}
+				// create the divider, and add an onclick method that
+				// adds a new pane to it
 				let divider = (
 					<div
 						style = {divider_style}
+						onClick = {smodel.split.bind(smodel, i)}
 					/>
 				)
 				// the dividers are added to even spaces in the array

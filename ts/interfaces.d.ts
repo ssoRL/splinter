@@ -19,7 +19,6 @@ interface IPaneModel {}
 
 // a content pane has no sub-splinters
 interface IContentProps extends IPaneProps {
-	onSplit: (string, boolean) => void;
 	model: IContentModel;
 }
 

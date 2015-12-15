@@ -6,17 +6,16 @@ module Splinter {
 		
 		render(){
 			let style = {
-				width: this.props.width + "px",
-				height: this.props.height + "px",
+				width: this.props.width,
+				height: this.props.height,
 				position: "absolute",
-				left: this.props.x_offset + "px",
-				top: this.props.y_offset + "px",
+				left: this.props.x_offset,
+				top: this.props.y_offset,
 				backgroundColor: this.props.model.bg_color
 			}
 			return (
 				<div
-					style = {style} 
-					onClick = {e => this.props.onSplit(this.props.model.id, true)}
+					style = {style}
 				/>
 			)
 		}
