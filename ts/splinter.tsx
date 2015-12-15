@@ -9,20 +9,21 @@ module Splinter {
 		}
 		
 		public render(){
+			let divider_size = 10;
 			let subs = this.props.model.panes;
 			let subs_l = subs.length;
-			let width = this.props.width;
+			let width = this.props.width - divider_size*(subs_l + 1);
 			let height = this.props.height
 			let x_off = 0;
 			let y_off = 0;
 			if(this.props.horizontal){
-				width = this.props.width / subs_l;
-				x_off = width;
+				width = width / subs_l;
+				x_off = width + divider_size;
 			}else{
-				height = this.props.height / subs_l;
+				height = height / subs_l;
 				y_off = height;
 			}
-			let rendered_subs = subs.map(function(sub, i){
+			let rendered_subs: JSX.Element[] = subs.map(function(sub, i){
 				let smodel: ISplinterModel = this.props.model;
 				if(sub instanceof SplinterModel){
 					return (
@@ -31,7 +32,7 @@ module Splinter {
 							horizontal = {true}
 							width = {width}
 							height = {height}
-							x_offset = {i*x_off}
+							x_offset = {i*x_off + divider_size}
 							y_offset = {i*y_off}
 						/>
 					)
@@ -42,18 +43,38 @@ module Splinter {
 							onSplit = {smodel.split.bind(smodel)}
 							width = {width}
 							height = {height}
-							x_offset = {i*x_off}
+							x_offset = {i*x_off + divider_size}
 							y_offset = {i*y_off}
 						/>
 					)
 				}
 			}, this)
+			
+			// now add dividers between the subs
+			let rsl = rendered_subs.length;
+			for(let i=0; i<rsl+1; i++){
+				let divider_style = {
+					backgroundColor: "#AAA",
+					width: this.props.horizontal ? divider_size : width,
+					height: this.props.horizontal ? height : divider_size,
+					position: "absolute",
+					left: i*x_off,
+					top: 0
+				}
+				let divider = (
+					<div
+						style = {divider_style}
+					/>
+				)
+				// the dividers are added to even spaces in the array
+				rendered_subs.splice(i*2, 0, divider);
+			}
 			let style = {
-				width: this.props.width + "px",
-				height: this.props.height + "px",
+				width: this.props.width,
+				height: this.props.height,
 				position: "absolute",
-				left: this.props.x_offset + "px",
-				top: this.props.y_offset + "px",
+				left: this.props.x_offset,
+				top: this.props.y_offset,
 			}
 			return (
 				<div style = {style}>

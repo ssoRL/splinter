@@ -2,6 +2,8 @@ module Splinter {
 	
 	export class Content extends React.Component<IContentProps, {}> implements IPane {
 		
+
+		
 		render(){
 			let style = {
 				width: this.props.width + "px",
