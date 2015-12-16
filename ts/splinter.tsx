@@ -2,6 +2,7 @@ module Splinter {
 	
 	export class Splinter extends React.Component<ISplinterProps, {}> implements IPane {
 		
+		
 		constructor(props: ISplinterProps){
 			super(props);
 			this.state = {};
@@ -62,11 +63,14 @@ module Splinter {
 				}
 				// create the divider, and add an onclick method that
 				// adds a new pane to it
+				ReactDraggable.Draggable;
 				let divider = (
+					<ReactDraggable.Draggable>
 					<div
 						style = {divider_style}
 						onClick = {smodel.split.bind(smodel, i)}
 					/>
+					</ReactDraggable.Draggable>
 				)
 				// the dividers are added to even spaces in the array
 				rendered_subs.splice(i*2, 0, divider);
