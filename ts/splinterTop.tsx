@@ -77,7 +77,7 @@ module Splinter {
 
 var model = new Splinter.TopModel();
 
-React.render(
+ReactDOM.render(
 	<Splinter.Top model={model} />,
 	document.getElementsByClassName('splinterTop')[0]
 )

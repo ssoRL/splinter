@@ -22,7 +22,8 @@
         "!node_modules/**"
     ],
     "files": [
-        "../typings/react/react-global.d.ts",
+        "../typings/react/react.d.ts",
+        "../typings/react/react-dom.d.ts",
         "../typings/react-draggable/react-draggable.d.ts",
         "interfaces.d.ts",
         "splinter.tsx",
