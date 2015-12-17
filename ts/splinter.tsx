@@ -26,25 +26,25 @@ module Splinter {
 			}
 			let smodel: ISplinterModel = this.props.model;
 			let rendered_subs: JSX.Element[] = subs.map(function(sub, i){
+				let shared_props ={
+					width: width,
+					height: height,
+					x_offset: i*x_off + divider_size,
+					y_offset: i*y_off
+				}
 				if(sub instanceof SplinterModel){
 					return (
 						<Splinter 
 							model = {sub}
 							horizontal = {true}
-							width = {width}
-							height = {height}
-							x_offset = {i*x_off + divider_size}
-							y_offset = {i*y_off}
+							{...shared_props}
 						/>
 					)
 				}else if(sub instanceof ContentModel){
 					return (
 						<Content
 							model = {sub}
-							width = {width}
-							height = {height}
-							x_offset = {i*x_off + divider_size}
-							y_offset = {i*y_off}
+							{...shared_props}
 						/>
 					)
 				}
