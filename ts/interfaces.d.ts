@@ -34,9 +34,13 @@ interface ISplinterProps extends IPaneProps {
 }
 
 interface ISplinterModel extends IPaneModel {
-	panes: IPaneModel[];
-	update: () => void;
-	split: (string, boolean) => void;
+	panes: IPaneModel[]
+	spans: number[]
+	div_offs: number[]
+	update: () => void
+	split: (index: number) => void
+	resize: (index: number, event: React.SyntheticEvent, drag: IDragEvent) => boolean
+	resizeSpans: (total:number) => void
 }
 
 // The component in charge of the whole page

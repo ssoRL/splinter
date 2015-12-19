@@ -62,7 +62,9 @@ interface IDraggableProps {
 	grid?: [number, number],
  
 	// Specifies the zIndex to use while dragging. 
-	zIndex?: number
+	zIndex?: number,
+	
+	key?: string
 }
 
 interface IDraggableCoreProps {
